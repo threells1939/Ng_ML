@@ -1,33 +1,33 @@
 clear ; close all; clc
 
-% ÔØÈëÊı¾İ
+% è½½å…¥æ•°æ®
 load('ex7data2.mat');
 Y = X(:,2);
 X = X(:,1);
 m = length(X);
 Data = [X Y];
  
-% ¼ÆËãÇ°±ßµãÓëºó±ßµã¾àÀë
-disVector = pdist(Data);  % pdistÖ®ºóµÄYÊÇÒ»¸öĞĞÏòÁ¿£¬15¸öÔªËØ·Ö±ğ´ú±íX µÄµÚ1µãÓë2-6µã¡¢µÚ2µãÓë3-6µã,......ÕâÑùµÄ¾àÀë
+% è®¡ç®—å‰è¾¹ç‚¹ä¸åè¾¹ç‚¹è·ç¦»
+disVector = pdist(Data);  % pdistä¹‹åçš„Yæ˜¯ä¸€ä¸ªè¡Œå‘é‡ï¼Œ15ä¸ªå…ƒç´ åˆ†åˆ«ä»£è¡¨X çš„ç¬¬1ç‚¹ä¸2-6ç‚¹ã€ç¬¬2ç‚¹ä¸3-6ç‚¹,......è¿™æ ·çš„è·ç¦»
  
-% ×ª»»³É·½Õó
+% è½¬æ¢æˆæ–¹é˜µ
 disMatrix = squareform(disVector);
  
-% È·¶¨²ã´Î¾ÛÀàÊ÷ 
+% ç¡®å®šå±‚æ¬¡èšç±»æ ‘ 
 treeCluster = linkage(disMatrix);
  
-% ¿ÉÊÓ»¯¾ÛÀàÊ÷
+% å¯è§†åŒ–èšç±»æ ‘
 dendrogram(treeCluster);
  
-% ¾ÛÀàÏÂ±ê
-idx = cluster(treeCluster,'maxclust',3); %»®·Ö¾ÛÀàÎª3Àà
+% èšç±»ä¸‹æ ‡
+idx = cluster(treeCluster,'maxclust',3); %åˆ’åˆ†èšç±»ä¸º3ç±»
  
-% »­Í¼
+% ç”»å›¾
 figure
 axis equal
 hold on;
  
-% ²»Í¬Àà°´ÕÕ²»Í¬ÑÕÉ«»æÖÆ³öÀ´
+% ä¸åŒç±»æŒ‰ç…§ä¸åŒé¢œè‰²ç»˜åˆ¶å‡ºæ¥
 for i = 1:m
    switch(idx(i))
        case 1
